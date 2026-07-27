@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=180&section=header&text=Leonis%20AI&fontSize=64&fontColor=ffffff&fontAlignY=32&desc=统一的%20AI%20API%20网关%20·%20Claude%20/%20GPT%20/%20Grok%20国内直连&descAlignY=54&descSize=16" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=180&section=header&text=Leonis%20AI&fontSize=64&fontColor=ffffff&fontAlignY=32&desc=114%20个模型%20·%20Claude%20/%20GPT%20/%20Gemini%20/%20Grok%20国内直连&descAlignY=54&descSize=16" width="100%" />
 
-### 一个 Key，接入 Claude · OpenAI · Grok 全系模型
+### 一个 Key，114 个模型 —— Claude · OpenAI · Gemini · Grok
 
 **AI API 中转网关** — 国内直连、OpenAI 与 Anthropic 双协议兼容、按 Token 实时计费
 
@@ -12,7 +12,9 @@
 
 ![Anthropic](https://img.shields.io/badge/Anthropic-Claude_Opus_5-D97757?style=flat-square&logo=anthropic&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--5.6-412991?style=flat-square&logo=openai&logoColor=white)
-![xAI](https://img.shields.io/badge/xAI-Grok-000000?style=flat-square&logo=x&logoColor=white)
+![Gemini](https://img.shields.io/badge/Google-Gemini_3.6-8E7CFF?style=flat-square&logo=google&logoColor=white)
+![xAI](https://img.shields.io/badge/xAI-Grok_4.5-000000?style=flat-square&logo=x&logoColor=white)
+![Models](https://img.shields.io/badge/模型总数-114-1a73e8?style=flat-square)
 ![Protocol](https://img.shields.io/badge/协议-OpenAI_%2B_Anthropic-2ea44f?style=flat-square)
 
 </div>
@@ -21,9 +23,9 @@
 
 ## 这是什么
 
-**Leonis AI** 是一个 AI API 中转网关（AI API Gateway / LLM Proxy），把 Claude、OpenAI、Grok 的模型聚合到**同一个 Base URL + 同一个 Key** 下。
+**Leonis AI** 是一个 AI API 中转网关（AI API Gateway / LLM Proxy），把 Claude、OpenAI、Google Gemini、xAI Grok 的 **114 个模型**聚合到**同一个 Base URL + 同一个 Key** 下。
 
-原本你需要三个平台的账号、三张外币信用卡、三套 SDK；现在改一行 `BASE_URL` 就够了。
+原本你需要四个平台的账号、几张外币信用卡、四套 SDK；现在改一行 `BASE_URL` 就够了。
 
 ```diff
 - ANTHROPIC_BASE_URL=https://api.anthropic.com
@@ -107,11 +109,18 @@ msg = client.messages.create(
 
 ---
 
-## 支持的模型
+## 支持的模型 — 共 114 个
 
 <table>
-<tr><th align="left">Anthropic</th><th align="left">OpenAI</th><th align="left">xAI</th></tr>
+<tr>
+<th align="left">⭐ Anthropic <sub>10</sub></th>
+<th align="left">OpenAI <sub>13</sub></th>
+<th align="left">Google Gemini <sub>78</sub></th>
+<th align="left">xAI Grok <sub>13</sub></th>
+</tr>
 <tr valign="top"><td>
+
+**编码首选**
 
 `claude-opus-5`
 `claude-opus-4-8`
@@ -123,35 +132,60 @@ msg = client.messages.create(
 
 </td><td>
 
+**Codex 原生**
+
 `gpt-5.6-sol`
 `gpt-5.6`
+`gpt-5.6-terra`
 `gpt-5.5`
-`gpt-5.4`
 `gpt-5.4-mini`
 `gpt-5.3-codex-spark`
 `gpt-image-2`
 
 </td><td>
 
-`grok-4`
-`grok-code`
+**覆盖最全**
+
+`gemini-3.6-flash`
+`gemini-3.1-pro-preview`
+`gemini-3.5-flash-thinking`
+`gemini-3-pro-image-4k`
+`nano-banana-pro`
+`imagen-4.0-ultra`
+`gemini-embedding-001`
+
+</td><td>
+
+**含图像视频**
+
+`grok-4.5`
+`grok-4.3`
+`grok-composer-2.5-fast`
+`grok-build-0.1`
+`grok-imagine-image`
+`grok-imagine-video`
 
 </td></tr>
 </table>
+
+> 📋 **[查看全部 114 个模型 →](https://leonis-ai.github.io/models.html)** 支持搜索过滤，点击即复制模型名
+
+**Gemini 变体后缀速查**：`-thinking` 开思考链 ｜ `-nothinking` 关思考链（最省） ｜ `-search` 内置联网 ｜ `-image` 出图 ｜ `-2k`/`-4k` 输出分辨率 ｜ `-latest` 自动跟随最新版
 
 ### 兼容端点
 
 | 端点 | 协议 | 典型客户端 |
 |---|---|---|
 | `/v1/messages` | Anthropic Messages | Claude Code、Anthropic SDK、Cline |
-| `/v1/chat/completions` | OpenAI Chat | 绝大多数第三方客户端 |
+| `/v1/chat/completions` | OpenAI Chat | 绝大多数第三方客户端；**Gemini 与 Grok 走这个** |
 | `/v1/responses` | OpenAI Responses | Codex CLI、Codex Desktop |
 
 ---
 
 ## 核心能力
 
-- **🔀 多平台聚合** — Claude / OpenAI / Grok 统一入口，一个 Key 全通
+- **🔀 多平台聚合** — Claude / OpenAI / Gemini / Grok 共 114 个模型，一个 Key 全通
+- **🎨 图像生成** — Nano Banana Pro、Imagen 4.0 Ultra、gpt-image-2、Grok Imagine 全都在
 - **⚡ Prompt 缓存** — 完整支持 Anthropic Prompt Caching，长代码长文档重复读取近乎零成本
 - **📊 用量可追溯** — 每一次请求、每一笔 Token 消耗、每一分钱都有明细，随时可查
 - **🔁 多通道容灾** — 多上游节点自动调度，单点故障自动切换
@@ -174,28 +208,64 @@ msg = client.messages.create(
 </td>
 <td width="50%">
 
-### ⚡ [awesome-ai-api-gateway](https://github.com/leonis-ai/awesome-ai-api-gateway)
-**AI 网关与中转生态精选**
+### 🟣 [codex-cli-guide](https://github.com/leonis-ai/codex-cli-guide)
+**Codex CLI 完全配置手册**
 
-开源网关、协议转换、路由调度、可观测性 —— 一份持续更新的 awesome 清单。
+`config.toml` 全字段详解、多 Provider 配置、审批与沙箱、MCP、`AGENTS.md`。
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 💰 [ai-api-pricing](https://github.com/leonis-ai/ai-api-pricing)
-**AI 模型价格对比表**
+### ✨ [gemini-api-guide](https://github.com/leonis-ai/gemini-api-guide)
+**Gemini API 中文配置手册**
 
-Claude / GPT / Gemini / Grok 全系模型输入输出、缓存读写单价横向对比与成本测算。
+78 个模型详解、命名规则拆解、thinking / search 变体、Nano Banana 与 Imagen 生图。
 
 </td>
+<td width="50%">
+
+### 🔀 [cc-switch-guide](https://github.com/leonis-ai/cc-switch-guide)
+**多配置一键切换**
+
+用 cc-switch 管理 Claude Code 与 Codex 的多套供应商配置，点一下就切换。
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ⚡ [awesome-ai-api-gateway](https://github.com/leonis-ai/awesome-ai-api-gateway)
+**AI 网关与中转生态精选**
+
+开源网关、协议转换、路由调度、可观测性 —— 一份持续更新的 awesome 清单。
+
+</td>
+<td width="50%">
+
+### 💰 [ai-api-pricing](https://github.com/leonis-ai/ai-api-pricing)
+**成本计算与缓存经济学**
+
+为什么 Claude Code 的账单和你想的不一样，附可运行的成本计算器。
+
+</td>
+</tr>
+<tr>
 <td width="50%">
 
 ### 🔧 [ai-client-configs](https://github.com/leonis-ai/ai-client-configs)
 **客户端对接配置合集**
 
 20+ 主流 AI 客户端的 Base URL 配置模板，复制即用。
+
+</td>
+<td width="50%">
+
+### 📋 [全部 114 个模型](https://leonis-ai.github.io/models.html)
+**在线可搜索模型清单**
+
+Claude / GPT / Gemini / Grok 全系模型名，支持关键词过滤，点击即复制。
 
 </td>
 </tr>
@@ -259,8 +329,10 @@ Leonis AI 是**已经部署好的托管服务** —— 你不用管服务器、�
 
 <sub>
 
-**关键词** · AI 中转 · API 中转 · AI 网关 · AI API Gateway · LLM Proxy · Claude 中转 · Claude API
-Claude Code 中转 · OpenAI 反代 · GPT 中转 · Codex CLI · Anthropic API · 国内直连 · 大模型 API 聚合
+**关键词** · AI 中转 · API 中转 · AI 网关 · AI API Gateway · LLM Proxy · Claude 中转 · Claude API · Claude Opus 5
+Claude Code 中转 · OpenAI 反代 · GPT 中转 · GPT-5.6 · Codex CLI · Anthropic API
+Gemini 中转 · Gemini API · 谷歌 Gemini · Nano Banana Pro · Imagen 4.0 · Grok API · Grok 4.5
+国内直连 · 大模型 API 聚合 · AI 生图 API
 
 </sub>
 
