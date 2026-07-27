@@ -29,7 +29,7 @@
 
 ```diff
 - ANTHROPIC_BASE_URL=https://api.anthropic.com
-+ ANTHROPIC_BASE_URL=https://ai.svtun.cn/api
++ ANTHROPIC_BASE_URL=https://ai.svtun.cn
 ```
 
 <div align="center">
@@ -52,7 +52,7 @@
 ### Claude Code
 
 ```bash
-export ANTHROPIC_BASE_URL="https://ai.svtun.cn/api"
+export ANTHROPIC_BASE_URL="https://ai.svtun.cn"
 export ANTHROPIC_AUTH_TOKEN="sk-your-key-here"
 
 claude
@@ -66,7 +66,7 @@ model_provider = "leonis"
 
 [model_providers.leonis]
 name = "Leonis AI"
-base_url = "https://ai.svtun.cn/api/v1"
+base_url = "https://ai.svtun.cn/v1"
 wire_api = "responses"
 env_key = "LEONIS_API_KEY"
 ```
@@ -77,7 +77,7 @@ env_key = "LEONIS_API_KEY"
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://ai.svtun.cn/api/v1",
+    base_url="https://ai.svtun.cn/v1",
     api_key="sk-your-key-here",
 )
 
@@ -93,7 +93,7 @@ resp = client.chat.completions.create(
 from anthropic import Anthropic
 
 client = Anthropic(
-    base_url="https://ai.svtun.cn/api",
+    base_url="https://ai.svtun.cn",
     auth_token="sk-your-key-here",
 )
 
